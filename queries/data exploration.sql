@@ -87,3 +87,34 @@ FROM sales_cleaned
 GROUP BY release_year
 ORDER BY release_year
 ASC;
+
+/*
+5. High-Quality vs High-Sales Games
+
+Identify games that are both:
+
+Critically well-received AND commercially successful
+
+Task:
+Find games where:
+
+critic_score is above the average critic score
+AND total_sales is above the average total sales
+
+Show: title, critic_score, total_sales
+Use subqueries or CTEs
+Sort by total_sales descending
+*/
+
+WITH avg_values AS(
+SELECT
+	AVG(critic_score) AS avg_score,
+    AVG(total_sales) AS avg_sales
+FROM sales_cleaned
+)
+SELECT title, critic_score, total_sales
+FROM sales_cleaned s
+CROSS JOIN avg_values a
+WHERE s.critic_score > a.avg_score 
+AND s.total_sales > a.avg_sales
+ORDER BY total_sales DESC;
