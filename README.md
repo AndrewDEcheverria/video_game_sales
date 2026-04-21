@@ -115,10 +115,21 @@ GROUP BY release_year
 ORDER BY release_year
 ASC;
 ```
+This one gave me issues with the release_date being a STRING date type instead of DATE, so if it is a date, use this query instead of the one above 
+```sql
+SELECT 
+    EXTRACT(YEAR FROM release_date) AS release_year,
+    ROUND(SUM(total_sales), 2) AS global_total_sales
+FROM sales_cleaned
+GROUP BY release_year
+ORDER BY release_year
+ASC;
+```
 
 ### Results
+Top 20
+<img width="380" height="705" alt="GlobalSales" src="https://github.com/user-attachments/assets/c8b86b7b-f25b-403b-ad80-95a285fc517d" />
 
-#TBD
 
 ***
 
