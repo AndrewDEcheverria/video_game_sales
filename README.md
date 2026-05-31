@@ -7,7 +7,7 @@ Showing the video game industry's sales and progression from 1980-2024.
 
 I have a few simple questions about the industry for analysing this data below as well as any cleaning to the data that was done.
 
-Software used: <B>MySQL<B>
+Software used: <B>BigQuery<B>
 
 ## Question and answer
 
